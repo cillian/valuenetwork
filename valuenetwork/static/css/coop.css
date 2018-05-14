@@ -200,3 +200,12 @@ td.login-block div#div_id_username {
 .login-block .form-actions button {
 	float: right;
 }
+.login-block .login-options {
+  clear: both;
+  padding-top: 15px;
+  text-align: left;
+  width: 300px;
+}
+.login-block .login-options a {
+  color: #734279;
+}

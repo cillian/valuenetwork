@@ -50,6 +50,9 @@ urlpatterns = [
     url(r'^fobi/plugins/form-handlers/db-store/',
         include('fobi.contrib.plugins.form_handlers.db_store.urls')),
 
+    # Fairlogin / Python Social Auth URLs
+    url('', include('social_django.urls', namespace='social')),
+
 ]
 
 if 'multicurrency' in settings.INSTALLED_APPS:

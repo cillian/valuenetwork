@@ -25,6 +25,9 @@ class LoginRequiredMiddleware:
             work, ensure your TEMPLATE_CONTEXT_PROCESSORS setting includes\
             'django.core.context_processors.auth'."
 
+        if self.logging_in_via_fairlogin(request):
+            return
+
         if "api/graph" in request.path_info:
             # Ignore graph API URls, they manage their own auth internally
             return
@@ -37,3 +40,6 @@ class LoginRequiredMiddleware:
             path = request.path_info.lstrip('/')
             if not any(m.match(path) for m in EXEMPT_URLS):
                 return HttpResponseRedirect(settings.LOGIN_URL + "?" + REDIRECT_FIELD_NAME + "=/" + path)
+
+    def logging_in_via_fairlogin(self, request):
+        return request.path_info.startswith("/login/keycloak") or request.path_info.startswith("/complete/keycloak")

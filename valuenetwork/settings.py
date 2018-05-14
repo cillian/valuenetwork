@@ -150,6 +150,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'graphene_django',
     'captcha',
+    'social_django',
 
     # `django-fobi` core
     'fobi',
@@ -220,6 +221,7 @@ INSTALLED_APPS = [
     # general
     'general',
     'mptt', # This provide Tree management in a 'nested set' style
+
 ]
 
 REST_FRAMEWORK = {
@@ -362,6 +364,8 @@ CAPTCHA_NOISE_FUNCTIONS = (
   'captcha.helpers.noise_dots',
   'captcha.helpers.noise_dots',
 )
+
+from fairlogin.settings import *
 
 # ----put all other settings above this line----
 try:

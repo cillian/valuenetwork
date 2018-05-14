@@ -56,6 +56,7 @@ body {
       <!-- <input type="submit" value="Go" id="lang-submit" style="display:none;"/> -->
     </form>
 
+
         <h4><img src="{% static 'img/logoFreedomCoop_terebum4_widealpha_white--.png' %}" title="{% trans "Freedom Coop's" %}"></h4>
         <h1>{% trans "Open Collaborative Platform (OCP)" %}</h1>
     <table class="landing" border="0" align="center" style="text-align:center">
@@ -84,16 +85,15 @@ body {
           <div class="log">
             <form method="POST" action="{{ request.get_full_path }}" autocapitalize="off" class="form-horizontal"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
                 {% csrf_token %}
+                {% include "account/_login_messages.html" %}
                 {{ form|as_bootstrap }}
                 <div class="form-actions">
-                    <a href="{% url "account_password_reset" %}" class="forgot-pass">{% trans "Forgot your password?" %}</a>
                     <button type="submit" class="btn btn-primary">{% trans "Log in" %}</button>
                 </div>
             </form>
+
         </div>
-        <div class="span4">
-            {% include "account/_login_sidebar.html" %}
-        </div>
+        {% include "account/_login_sidebar.html" %}
 	</td>
       </tr>
     </table>

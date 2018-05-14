@@ -1,1 +1,6 @@
-{# provide log in sidebar here #}
+{% load i18n %}
+
+<div class="login-options">
+  <a href="{% url "social:begin" "keycloak" %}">Login via Fairlogin</a> |
+  <a href="{% url "account_password_reset" %}" class="forgot-pass">{% trans "Forgot your password?" %}</a>
+</div>

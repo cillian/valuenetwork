@@ -1,0 +1,19 @@
+{% load i18n %}
+
+{% if 'alert' in request.GET %}
+  <div class="alert alert-error">
+    {% if request.GET.alert == 'account_not_found' %}
+      {% trans "<strong>OCP account not found.</strong><br><br> To login via Fairlogin you need an OCP account.<br><br><em>Please note the email address of your OCP and Fairlogin accounts need to be the same.</em>" %}
+    {% elif request.GET.alert == 'invalid_verification_code' %}
+      {% trans "<strong>There was a problem verifying your email address.</strong><br><br> Please try copying and pasting the link we sent you into your browser's address bar again." %}
+    {% endif %}
+  </div>
+{% endif %}
+
+{% if 'info' in request.GET %}
+  <div class="alert alert-info">
+    {% if request.GET.info == 'verify_email' %}
+      {% trans "<strong>Please verify your email address.</strong><br><br> To do this check your email and click the link we have sent you." %}
+    {% endif %}
+  </div>
+{% endif %}
